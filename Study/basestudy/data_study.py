@@ -48,7 +48,7 @@
 
 
 
-list = ["wfm", 123, 100.0]
+# list = ["wfm", 123, 100.0]
 # print(list[0])  # 通过下标进行访问
 # print(list[0:2])
 # print(list[0:])
