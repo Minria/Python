@@ -6,20 +6,22 @@ import numpy as np
 # b : ndarray 数组
 # out : ndarray, 可选，用来保存dot()的计算结果
 
+# 矩阵的乘法 AB
 # a = np.array([[1, 2], [3, 4]])
 # b = np.array([[11, 12], [13, 14]])
 # print(np.dot(a, b))
 
 # 两个向量的点积
-
+# 1*11 + 2*12 + 3*13 + 4*14 = 130
 # a = np.array([[1, 2], [3, 4]])
 # b = np.array([[11, 12], [13, 14]])
 # print(np.vdot(a, b))
 
-# 计算向量外积
+# 计算一维向量的内积
+# 等价于 1*0+2*1+3*0
 # print (np.inner(np.array([1,2,3]),np.array([0,1,0])))
 
-# 多维度计算外积
+# 多维度计算内积
 # a = np.array([[1, 2], [3, 4]])
 # print('数组 a：')
 # print(a)
@@ -30,10 +32,10 @@ import numpy as np
 # print(np.inner(a, b))
 
 # 矩阵乘积
-
-# a = [[1, 0], [0, 1]]
-# b = [[4, 1], [2, 2]]
-# print(np.matmul(a, b))
+# AB
+a = [[1, 1], [0, 1]]
+b = [[4, 1], [2, 2]]
+print(np.matmul(a, b))
 
 # a = [[1, 0], [0, 1]]
 # b = [1, 2]
