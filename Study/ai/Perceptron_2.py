@@ -43,10 +43,10 @@ print(b)
 # 可视化
 
 
-# Y = pd.DataFrame(Y)  # 便于索引Y中的值(注意！list（Y）中的每一个元素都是array，所以不要用)
-# color = {1: 'red', -1: 'blue'}
-# x = np.linspace(0, 4)
-# y = 5 - x
-# plt.scatter(X[:, 0], X[:, 1], color=[color[i] for i in Y[0]])  # 注意！索引数据帧的列，哪怕只有一列也要有对应索引值
-# plt.plot(x, y, 'pink')
-# plt.show()
+Y = pd.DataFrame(Y)  # 便于索引Y中的值(注意！list（Y）中的每一个元素都是array，所以不要用)
+color = {1: 'red', -1: 'blue'}
+x = np.linspace(0, 4)
+y = 5 - x
+plt.scatter(X[:, 0], X[:, 1], color=[color[i] for i in Y[0]])  # 注意！索引数据帧的列，哪怕只有一列也要有对应索引值
+plt.plot(x, y, 'pink')
+plt.show()
