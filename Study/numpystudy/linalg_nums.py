@@ -10,7 +10,16 @@ import numpy as np
 # a = np.array([[1, 2], [3, 4]])
 # b = np.array([[11, 12], [13, 14]])
 # print(np.dot(a, b))
-
+# print(np.matmul(a, b))
+# a = np.array([1, 2])
+# b = np.array([[1, 2], [3, 4]])
+# print(np.dot(a, b))
+# print(np.dot(b, a))
+# a = np.array([1, 2, 3])
+# b = np.array([2, 3, 4]).reshape((3,1))
+# print(np.dot(a, b))
+# print(np.matmul(a, b))
+# print(np.dot(b, a)) # erroe
 # 两个向量的点积
 # 1*11 + 2*12 + 3*13 + 4*14 = 130
 # a = np.array([[1, 2], [3, 4]])
@@ -33,9 +42,9 @@ import numpy as np
 
 # 矩阵乘积
 # AB
-a = [[1, 1], [0, 1]]
-b = [[4, 1], [2, 2]]
-print(np.matmul(a, b))
+# a = [[1, 1], [0, 1]]
+# b = [[4, 1], [2, 2]]
+# print(np.matmul(a, b))
 
 # a = [[1, 0], [0, 1]]
 # b = [1, 2]
