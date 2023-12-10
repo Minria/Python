@@ -1,0 +1,176 @@
+{##}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Image Processing</title>#}
+{#     <style>#}
+{#        /* CSS styles for the processed images */#}
+{#        /*#}
+{#        #processedImages {#}
+{#            display: flex;#}
+{#            flex-wrap: wrap;#}
+{#            justify-content: space-between;#}
+{#        }#}
+{##}
+{#        #processedImages img {#}
+{#            width: 800px;#}
+{#            height: 800px;#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{##}
+{#        #processedImages p {#}
+{#            margin-bottom: 10px;#}
+{#        }#}
+{#         */#}
+{#        .container {#}
+{#            display: flex;#}
+{#            flex-wrap: wrap;#}
+{#            justify-content: center;#}
+{#            align-items: center;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Image Processing</h1>#}
+{#    <form id="imageForm" enctype="multipart/form-data">#}
+{#        <input type="file" name="images[]" accept="image/*" multiple>#}
+{#        <button type="button" onclick="uploadImages()">Upload</button>#}
+{#    </form>#}
+{#    <div class="container" id="processedImages"></div>#}
+{##}
+{#    <script>#}
+{#        function uploadImages() {#}
+{#            var form = document.getElementById('imageForm');#}
+{#            var formData = new FormData(form);#}
+{#            fetch('/upload', {#}
+{#                method: 'POST',#}
+{#                body: formData#}
+{#            })#}
+{#            .then(response => response.json())#}
+{#            .then(data => {#}
+{#                var processedImagesDiv = document.getElementById('processedImages');#}
+{#                processedImagesDiv.innerHTML = '';#}
+{#                data.processed_images.forEach(ans => {#}
+{#                    img = ans.low_image;#}
+{#                    var imgElement = document.createElement('img');#}
+{#                    imgElement.src = 'data:image/png;base64,' + img;#}
+{#                    imgElement.width = 600;#}
+{#                    imgElement.height = 600;#}
+{#                    processedImagesDiv.appendChild(imgElement);#}
+{#                    img = ans.processed_image;#}
+{#                    var imgElement2 = document.createElement('img');#}
+{#                    imgElement2.src = 'data:image/png;base64,' + img;#}
+{#                    imgElement2.width = 600;#}
+{#                    imgElement2.height = 600;#}
+{#                    processedImagesDiv.appendChild(imgElement2);#}
+{#                    time = ans.time;#}
+{#                    var timeElement = document.createElement('p');#}
+{#                    timeElement.textContent = 'Time: ' + time + " ";#}
+{#                    processedImagesDiv.appendChild(timeElement);#}
+{#                    psnr = ans.psnr;#}
+{#                    var psnrElement = document.createElement('p');#}
+{#                    psnrElement.textContent = 'PSNR: ' + psnr + " ";#}
+{#                    processedImagesDiv.appendChild(psnrElement);#}
+{#                });#}
+{#            })#}
+{#            .catch(error => console.error('Error:', error));#}
+{#        }#}
+{#    </script>#}
+{#</body>#}
+{#</html>#}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+     <style>
+        /* CSS styles for the processed images */
+        /*
+        #processedImages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #processedImages img {
+            width: 800px;
+            height: 800px;
+            margin-bottom: 20px;
+        }
+
+        #processedImages p {
+            margin-bottom: 10px;
+        }
+         */
+        /*
+        {##processedImages p {#}
+        {#    margin-bottom: 20px;#}
+        {#    display: flex;#}
+        {#    justify-content: space-between;#}
+        }*/
+        /*
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+         */
+        .image {
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Processing</h1>
+    <form id="imageForm" enctype="multipart/form-data">
+        <input type="file" name="images[]" accept="image/*" multiple>
+        <button type="button" onclick="uploadImages()">Upload</button>
+    </form>
+    <div class="container" id="processedImages"></div>
+
+    <script>
+        function uploadImages() {
+    var form = document.getElementById('imageForm');
+    var formData = new FormData(form);
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        var processedImagesDiv = document.getElementById('processedImages');
+        processedImagesDiv.innerHTML = '';
+        data.processed_images.forEach(ans => {
+            img = ans.low_image;
+            var imgElement = document.createElement('img');
+            imgElement.src = 'data:image/png;base64,' + img;
+            imgElement.width = 600;
+            imgElement.height = 600;
+            processedImagesDiv.appendChild(imgElement);
+            img = ans.processed_image;
+            var imgElement2 = document.createElement('img');
+            imgElement2.src = 'data:image/png;base64,' + img;
+            imgElement2.width = 600;
+            imgElement2.height = 600;
+            processedImagesDiv.appendChild(imgElement2);
+            time = ans.time;
+            var timeElement = document.createElement('p');
+            timeElement.textContent = 'Time: ' + time;
+            processedImagesDiv.appendChild(timeElement);
+            psnr = ans.psnr;
+            var psnrElement = document.createElement('p');
+            psnrElement.textContent = ' PSNR: ' + psnr;
+            processedImagesDiv.appendChild(psnrElement);
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+    </script>
+</body>
+</html>
